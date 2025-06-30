@@ -30,7 +30,7 @@
     }
 
     .card {
-      background: #ffffff;
+      background: #ffffff; /* solid white background */
       border-radius: 20px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
       width: 240px;
@@ -52,16 +52,44 @@
       transform: scale(1.05);
     }
 
-    .message {
+    .popup-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
       display: none;
-      margin: 20px auto;
-      font-size: 1.2rem;
-      padding: 20px;
-      width: 80%;
-      background: rgba(255, 255, 255, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background: #fff;
+      padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      font-size: 1.1rem;
       color: #333;
+    }
+
+    .popup-box button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff80ab;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .popup-box button:hover {
+      background-color: #ff4d6d;
     }
 
     audio {
@@ -80,7 +108,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 999;
+      z-index: 1000;
     }
 
     .popup-content {
@@ -136,14 +164,19 @@
 
   <h1>OPEN WHEN... </h1>
   <div class="container">
-    <div class="card" onclick="showMessage(0)">Open when you miss me</div>
-    <div class="card" onclick="showMessage(1)">Open when you feel low</div>
-    <div class="card" onclick="showMessage(2)">Open when you want to laugh</div>
-    <div class="card" onclick="showMessage(3)">Open when you’re stressed</div>
-    <div class="card" onclick="showMessage(4)">Open on a random day</div>
+    <div class="card" onclick="showMessage(0)">💌 When you miss my dumb face (you do!)</div>
+    <div class="card" onclick="showMessage(1)">🧸 When your heart needs a warm hug </div>
+    <div class="card" onclick="showMessage(2)">😂 When you miss my top-tier nonsense</div>
+    <div class="card" onclick="showMessage(3)">☕ When stress says hi and motivation says bye</div>
+    <div class="card" onclick="showMessage(4)">🎁 When you want a random burst of joy</div>
   </div>
 
-  <div class="message" id="msg"></div>
+  <div class="popup-message" id="popupMsg">
+    <div class="popup-box">
+      <p id="msg"></p>
+      <button onclick="closeMessage()">Close 💖</button>
+    </div>
+  </div>
 
   <audio id="bg-music" loop preload="auto">
     <source src="pretty-little-baby.mp3" type="audio/mpeg" />
@@ -162,7 +195,11 @@
     function showMessage(index) {
       const msg = document.getElementById("msg");
       msg.innerText = messages[index];
-      msg.style.display = "block";
+      document.getElementById("popupMsg").style.display = "flex";
+    }
+
+    function closeMessage() {
+      document.getElementById("popupMsg").style.display = "none";
     }
 
     function closePopup() {
