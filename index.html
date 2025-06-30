@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open When... 
+With Love from Punya 💙</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffd6e8, #e0f7fa);
+      text-align: center;
+      color: #4e4e4e;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 30px;
+      font-size: 2.8rem;
+      color: #ff4d6d;
+      text-shadow: 1px 1px #fff;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px auto;
+      max-width: 900px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 240px;
+      margin: 20px;
+      padding: 25px;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+      border: 2px dashed #ff80ab;
+      background-image: url('https://i.imgur.com/xGBtQAK.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 1px 1px #000;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .message {
+      display: none;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      padding: 20px;
+      width: 80%;
+      background: #fff0f5;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      color: #333;
+    }
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+    }
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .popup-content h2 {
+      color: #ff4d6d;
+      margin-top: 0;
+    }
+    .popup-content ul {
+      padding-left: 20px;
+    }
+    .popup-content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff80ab;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .popup-content button:hover {
+      background-color: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>📜 Rules to Follow 😤</h2>
+      <ul>
+        <li>💌 Open only one letter at a time.</li>
+        <li>📬 Open the right one for the right moment.</li>
+        <li>🤫 No sharing these with anyone.</li>
+        <li>⛔ Don’t open them all at once (I’ll find out 😤).</li>
+        <li>📲 Text me after opening one. I wanna know your reaction.</li>
+        <li>🧸 Keep them safe. They’re tiny pieces of my heart.</li>
+      </ul>
+      <button onclick="closePopup()">Okay got it! 💙</button>
+    </div>
+  </div>
+
+  <h1>Open When... With Love from Punya 💙</h1>
+  <div class="container">
+    <div class="card" onclick="showMessage(0)">Open when you miss me</div>
+    <div class="card" onclick="showMessage(1)">Open when you feel low</div>
+    <div class="card" onclick="showMessage(2)">Open when you want to laugh</div>
+    <div class="card" onclick="showMessage(3)">Open when you’re stressed</div>
+    <div class="card" onclick="showMessage(4)">Open on a random day</div>
+  </div>
+
+  <div class="message" id="msg"></div>
+
+  <audio autoplay loop controls>
+    <source src="/mnt/data/Download Pretty Little Baby Ringtone - MobCup.Com.Co.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const messages = [
+      `Hey dumbo 😤 missing me already? Calm down, I’m not going anywhere 😌 Just close your eyes and think of our chaotic convos and stupid jokes. Even in one year, you’ve become one of the closest people in my life—and yes, I miss you too 💙`,
+      `Heyy, I don’t know what’s going on, but if you’re feeling off—pause for a second. You're allowed to feel that way. Just know that I’m always here, even if we’ve not known each other forever. You matter, okay? Go eat something good and call me if you need to. 🤝`,
+      `Let’s take a moment to honour all the daily torture I put you through with my legendary terrible jokes 😌 You pretend to hate them, but deep down, I know you’d miss them. In just a year, you’ve become the person I send 90% of my nonsense to—and you still haven’t blocked me 😤 That deserves a medal 😂 Stay chaotic, stay hilarious, and keep laughing (mostly at me).`,
+      `Okay champ, deep breath. Stress is temporary, but you’re permanently awesome 😌 You’ve got more potential than you think—even if your study schedule says otherwise 😤 Go drink water, crack your knuckles like an anime character, and conquer. You got this 💪`,
+      `Hi you 👋 Just reminding you that you're appreciated—whether it’s a boring day or a good one. One year of knowing you feels like I’ve known you way longer. Thanks for being your chaotic, sweet self 💙 This letter is your random smile trigger 😁`
+    ];
+
+    function showMessage(index) {
+      const msg = document.getElementById('msg');
+      msg.innerText = messages[index];
+      msg.style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
