@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Open When...</title>
   <style>
     body {
@@ -13,12 +13,14 @@
       margin: 0;
       padding: 0;
     }
+
     h1 {
       margin-top: 30px;
       font-size: 2.8rem;
       color: #ff4d6d;
       text-shadow: 2px 2px 4px #fff;
     }
+
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -26,10 +28,9 @@
       margin: 30px auto;
       max-width: 900px;
     }
+
     .card {
-      background-image: url('hw1.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 20px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
       width: 240px;
@@ -38,16 +39,19 @@
       padding: 20px;
       transition: transform 0.3s;
       cursor: pointer;
-      color: white;
+      color: #333;
       font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-shadow: 1px 1px #000;
+      text-align: center;
+      line-height: 1.4;
     }
+
     .card:hover {
       transform: scale(1.05);
     }
+
     .message {
       display: none;
       margin: 20px auto;
@@ -59,11 +63,13 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       color: #333;
     }
+
     audio {
       position: fixed;
       bottom: 10px;
       left: 10px;
     }
+
     .popup {
       position: fixed;
       top: 0;
@@ -76,6 +82,7 @@
       align-items: center;
       z-index: 999;
     }
+
     .popup-content {
       background: #fff;
       padding: 30px;
@@ -85,13 +92,16 @@
       text-align: left;
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
+
     .popup-content h2 {
       color: #ff4d6d;
       margin-top: 0;
     }
+
     .popup-content ul {
       padding-left: 20px;
     }
+
     .popup-content button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -102,6 +112,7 @@
       cursor: pointer;
       font-weight: bold;
     }
+
     .popup-content button:hover {
       background-color: #ff4d6d;
     }
@@ -135,7 +146,7 @@
   <div class="message" id="msg"></div>
 
   <audio id="bg-music" loop preload="auto">
-    <source src="pretty-little-baby.mp3" type="audio/mpeg">
+    <source src="pretty-little-baby.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
@@ -149,17 +160,17 @@
     ];
 
     function showMessage(index) {
-      const msg = document.getElementById('msg');
+      const msg = document.getElementById("msg");
       msg.innerText = messages[index];
-      msg.style.display = 'block';
+      msg.style.display = "block";
     }
 
     function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-      const music = document.getElementById('bg-music');
+      document.getElementById("popup").style.display = "none";
+      const music = document.getElementById("bg-music");
       if (music) {
-        music.play().catch((err) => {
-          console.warn('Autoplay blocked:', err);
+        music.play().catch(err => {
+          console.warn("Autoplay blocked:", err);
         });
       }
     }
